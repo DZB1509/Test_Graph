@@ -1,3 +1,5 @@
+# Coffee Shop Supply Chain System - Class Diagram
+```mermaid
 classDiagram
     %% Core Entities
     class User {
