@@ -109,7 +109,7 @@ classDiagram
         +reject()
     }
 
-    %% Junction Tables
+    %% Junction/Bridge Tables
     class ProductIngredient {
         -String productId
         -String ingredientId
@@ -181,22 +181,30 @@ classDiagram
         COMPLETED
     }
 
-    %% Relationships
-    User ||--|| UserRole : has
-    Shop ||--o{ Order : has
-    Shop ||--o{ Stock : contains
-    Product ||--o{ ProductIngredient : uses
-    Product ||--o{ OrderProduct : in
-    Order ||--o{ OrderProduct : contains
-    Order ||--|| OrderStatus : has
-    Ingredient ||--o{ ProductIngredient : part_of
-    Ingredient ||--o{ PurchaseItem : ordered
-    Ingredient ||--o{ StockIngredient : stored
-    Ingredient ||--o{ IssueIngredient : issued
-    Supplier ||--o{ PurchaseOrder : supplies
-    PurchaseOrder ||--o{ PurchaseItem : contains
-    PurchaseOrder ||--|| POStatus : has
-    Stock ||--o{ StockIngredient : holds
-    InventoryIssue ||--o{ IssueIngredient : issues
-    InventoryIssue ||--|| IssueStatus : has
+    %% Main Relationships
+    User ||--|| UserRole
+    Shop ||--o{ Order
+    Shop ||--o{ Stock
+    
+    Product ||--o{ ProductIngredient
+    Product ||--o{ OrderProduct
+    
+    Order ||--o{ OrderProduct
+    
+    Ingredient ||--o{ ProductIngredient
+    Ingredient ||--o{ PurchaseItem
+    Ingredient ||--o{ StockIngredient
+    Ingredient ||--o{ IssueIngredient
+    
+    Supplier ||--o{ PurchaseOrder
+    PurchaseOrder ||--o{ PurchaseItem
+    
+    Stock ||--o{ StockIngredient
+    
+    InventoryIssue ||--o{ IssueIngredient
     User ||--o{ InventoryIssue : creates
+    
+    %% Status Relationships
+    Order ||--|| OrderStatus
+    PurchaseOrder ||--|| POStatus
+    InventoryIssue ||--|| IssueStatus
