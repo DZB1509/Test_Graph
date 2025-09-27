@@ -1,5 +1,3 @@
-# Coffee Shop Supply Chain System - Class Diagram
-```mermaid
 classDiagram
     %% Core Entities
     class User {
@@ -182,27 +180,21 @@ classDiagram
     }
 
     %% Relationships
-    User ||--|| UserRole : "has"
-    Shop ||--o{ Order : "has"
-    Shop ||--o{ Stock : "contains"
-    
-    Product ||--o{ ProductIngredient : "uses"
-    Product ||--o{ OrderProduct : "in"
-    
-    Order ||--o{ OrderProduct : "contains"
-    Order ||--|| OrderStatus : "has"
-    
-    Ingredient ||--o{ ProductIngredient : "part of"
-    Ingredient ||--o{ PurchaseItem : "ordered"
-    Ingredient ||--o{ StockIngredient : "stored"
-    Ingredient ||--o{ IssueIngredient : "issued"
-    
-    Supplier ||--o{ PurchaseOrder : "supplies"
-    PurchaseOrder ||--o{ PurchaseItem : "contains"
-    PurchaseOrder ||--|| POStatus : "has"
-    
-    Stock ||--o{ StockIngredient : "holds"
-    
-    InventoryIssue ||--o{ IssueIngredient : "issues"
-    InventoryIssue ||--|| IssueStatus : "has"
-    User ||--o{ InventoryIssue : "creates"
+    User ||--|| UserRole : has
+    Shop ||--o{ Order : has
+    Shop ||--o{ Stock : contains
+    Product ||--o{ ProductIngredient : uses
+    Product ||--o{ OrderProduct : in
+    Order ||--o{ OrderProduct : contains
+    Order ||--|| OrderStatus : has
+    Ingredient ||--o{ ProductIngredient : part_of
+    Ingredient ||--o{ PurchaseItem : ordered
+    Ingredient ||--o{ StockIngredient : stored
+    Ingredient ||--o{ IssueIngredient : issued
+    Supplier ||--o{ PurchaseOrder : supplies
+    PurchaseOrder ||--o{ PurchaseItem : contains
+    PurchaseOrder ||--|| POStatus : has
+    Stock ||--o{ StockIngredient : holds
+    InventoryIssue ||--o{ IssueIngredient : issues
+    InventoryIssue ||--|| IssueStatus : has
+    User ||--o{ InventoryIssue : creates
